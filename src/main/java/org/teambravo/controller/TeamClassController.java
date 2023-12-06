@@ -2,8 +2,10 @@ package org.teambravo.controller;
 
 import org.teambravo.entity.TeamClass;
 
-import javax.persistence.*;
-import java.util.ArrayList;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import java.util.List;
 
 public class TeamClassController {
@@ -85,27 +87,39 @@ public class TeamClassController {
         }
         return false;
     }
-    public boolean deleteTeam(org.teambravo.entity.TeamClass teamClass){
+    public boolean deleteTeam(int teamId) {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction transaction = null;
+
         try {
             transaction = entityManager.getTransaction();
             transaction.begin();
-            // If the entity is attached then remove customer, else merge(attach/update) entity and then remove
-            entityManager.remove(entityManager.contains(teamClass) ? teamClass:entityManager.merge(teamClass));
-            transaction.commit();
-            return true;
-        } catch (Exception e){
-            if(transaction != null){
+
+
+            TeamClass teamToDelete = entityManager.find(TeamClass.class, teamId);
+
+            if (teamToDelete != null) {
+                entityManager.remove(teamToDelete);
+                transaction.commit();
+                return true;
+            }
+
+            transaction.rollback();
+            return false;
+        } catch (Exception e) {
+            if (transaction != null) {
                 transaction.rollback();
             }
             e.printStackTrace();
+            return false;
         } finally {
             entityManager.close();
         }
-        return false;
     }
 
 
-
 }
+
+
+
+
