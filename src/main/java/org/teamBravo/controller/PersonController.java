@@ -12,7 +12,7 @@ public class PersonController {
     public static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("hibernate");
 
     // CREATE
-    public boolean save(Object person) {
+    public boolean savePerson(Object person) {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction transaction = null;
         try {
