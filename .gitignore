@@ -15,6 +15,9 @@ target/
 ### MySql ###
 persistence.xml
 
+.idea/src/resources/META-INF/persistence.xml
+
+
 ### Eclipse ###
 .apt_generated
 .classpath

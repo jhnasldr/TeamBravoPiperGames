@@ -2,8 +2,11 @@ package org.verran.view;
 
 import org.verran.controller.CarController;
 import org.verran.controller.CustomerController;
+import org.verran.controller.TeamClassController;
 import org.verran.entity.Car;
 import org.verran.entity.Customer;
+import org.verran.entity.TeamClass;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -15,10 +18,12 @@ import java.util.Scanner;
 public class Menu {
     private CustomerController customerController;
     private CarController carController;
+    private TeamClassController teamClassController;
 
     public Menu(CustomerController customerController) {
         this.customerController = customerController;
         carController = new CarController();
+        teamClassController = new TeamClassController();
     }
 
     public void showMenu(){
@@ -36,6 +41,10 @@ public class Menu {
         System.out.println("--------------------------");
         System.out.println("11.\tHantera bilköp");
         System.out.println("--------------------------");
+        System.out.println("12. Add team");
+        System.out.println("--------------------------");
+
+
         handleInput();
     }
     private void space(){
@@ -129,6 +138,17 @@ public class Menu {
                     System.out.println("No deal, something went wrong");
                 }
                 break;
+            case "12" :
+                // Add customer
+                System.out.print("Ange team: ");
+                String TeamName = new Scanner(System.in).nextLine();
+                if(teamClassController.saveTeam(new TeamClass(TeamName))){
+                    System.out.println(TeamName + " added");
+                } else {
+                    System.out.println("Failed to add team");
+                } break;
+
+
             default:
                 break;
         }
