@@ -43,6 +43,9 @@ public class Menu {
         System.out.println("--------------------------");
         System.out.println("12. Add team");
         System.out.println("--------------------------");
+        System.out.println("13. List teams");
+        System.out.println("--------------------------");
+
 
 
         handleInput();
@@ -147,6 +150,10 @@ public class Menu {
                 } else {
                     System.out.println("Failed to add team");
                 } break;
+            case "13":
+                // List all cars
+                teamClassController.getAllTeams(true);
+                break;
 
 
             default:

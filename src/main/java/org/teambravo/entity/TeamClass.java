@@ -2,6 +2,8 @@ package org.teambravo.entity;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Teams")
@@ -15,8 +17,8 @@ public class TeamClass {
     @Column(name = "team_name" , length = 50)
     private String name;
 
-    //@OneToMany (fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy ="team")
-
+    // @OneToMany (fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy ="team")
+    //private List<TeamClass> teamList = new ArrayList<>();
     public TeamClass() {
 
     }

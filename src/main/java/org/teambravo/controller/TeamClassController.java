@@ -1,5 +1,7 @@
 package org.teambravo.controller;
 
+import org.teambravo.entity.TeamClass;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,24 +37,24 @@ public class TeamClassController {
     }
 
     //READ
-    public List<org.teambravo.entity.TeamClass> getAll (boolean printOut){
+    public List<TeamClass> getAllTeams (boolean printOut){
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction transaction = null;
-        List<org.teambravo.entity.TeamClass> teamClassToReturn = new ArrayList<>();
+
         try {
             transaction = entityManager.getTransaction();
             transaction.begin();
-            TypedQuery<org.teambravo.entity.TeamClass> resultList = entityManager.createQuery("FROM TeamClass", org.teambravo.entity.TeamClass.class);
-            teamClassToReturn.addAll(resultList.getResultList());
+            List<TeamClass> teamResultList = entityManager.createQuery("FROM TeamClass", TeamClass.class).getResultList();
+            // teamClassToReturn.addAll(teamResultList.getResultList());
             transaction.commit();
             if (printOut) {
-                for (org.teambravo.entity.TeamClass teamClass :
-                        teamClassToReturn) {
+                for (TeamClass teamClass :
+                        teamResultList) {
                     System.out.println(teamClass.getTeamId() + ". " + teamClass.getTeamName());
 
                 }
             }
-            return  teamClassToReturn;
+            return  teamResultList;
 
         } catch (Exception e) {
             if (transaction != null) {
