@@ -1,7 +1,7 @@
-package org.verran.controller;
+package org.teambravo.controller;
 
-import org.verran.entity.Car;
-import org.verran.entity.Customer;
+import org.teambravo.entity.Car;
+import org.teambravo.entity.Customer;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

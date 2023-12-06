@@ -1,4 +1,4 @@
-package org.verran.entity;
+package org.teambravo.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;

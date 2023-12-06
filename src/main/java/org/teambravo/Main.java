@@ -1,7 +1,7 @@
-package org.verran;
+package org.teambravo;
 
-import org.verran.controller.CustomerController;
-import org.verran.view.Menu;
+import org.teambravo.controller.CustomerController;
+import org.teambravo.view.Menu;
 
 public class Main {
     public static void main(String[] args) {

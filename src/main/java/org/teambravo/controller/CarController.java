@@ -1,6 +1,6 @@
-package org.verran.controller;
+package org.teambravo.controller;
 
-import org.verran.entity.Car;
+import org.teambravo.entity.Car;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;

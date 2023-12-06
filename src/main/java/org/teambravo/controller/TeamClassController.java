@@ -1,4 +1,4 @@
-package org.verran.controller;
+package org.teambravo.controller;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -35,18 +35,18 @@ public class TeamClassController {
     }
 
     //READ
-    public List<org.verran.entity.TeamClass> getAll (boolean printOut){
+    public List<org.teambravo.entity.TeamClass> getAll (boolean printOut){
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction transaction = null;
-        List<org.verran.entity.TeamClass> teamClassToReturn = new ArrayList<>();
+        List<org.teambravo.entity.TeamClass> teamClassToReturn = new ArrayList<>();
         try {
             transaction = entityManager.getTransaction();
             transaction.begin();
-            TypedQuery<org.verran.entity.TeamClass> resultList = entityManager.createQuery("FROM TeamClass", org.verran.entity.TeamClass.class);
+            TypedQuery<org.teambravo.entity.TeamClass> resultList = entityManager.createQuery("FROM TeamClass", org.teambravo.entity.TeamClass.class);
             teamClassToReturn.addAll(resultList.getResultList());
             transaction.commit();
             if (printOut) {
-                for (org.verran.entity.TeamClass teamClass :
+                for (org.teambravo.entity.TeamClass teamClass :
                         teamClassToReturn) {
                     System.out.println(teamClass.getTeamId() + ". " + teamClass.getTeamName());
 
@@ -64,7 +64,7 @@ public class TeamClassController {
         }
         return null;
     }
-    public boolean updateTeam(org.verran.entity.TeamClass teamClass){
+    public boolean updateTeam(org.teambravo.entity.TeamClass teamClass){
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction transaction = null;
         try {
@@ -83,7 +83,7 @@ public class TeamClassController {
         }
         return false;
     }
-    public boolean deleteTeam(org.verran.entity.TeamClass teamClass){
+    public boolean deleteTeam(org.teambravo.entity.TeamClass teamClass){
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction transaction = null;
         try {
