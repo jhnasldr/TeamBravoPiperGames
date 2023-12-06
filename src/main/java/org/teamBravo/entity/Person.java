@@ -1,4 +1,4 @@
-package org.verran.entity;
+package org.teamBravo.entity;
 
 import javax.persistence.*;
 
@@ -33,6 +33,7 @@ public class Person {
     public Person() {
     }
 
+    // Behöver konstruktorn justeras? Behövs alla värden finnas med i den?
     public Person(int id, String firstName, String lastName, String nickName, String address, int postalCode, String city, String country, String email) {
         this.id = id;
         this.firstName = firstName;

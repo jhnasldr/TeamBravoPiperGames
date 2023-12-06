@@ -1,4 +1,4 @@
-package org.verran.entity;
+package org.teamBravo.entity;
 
 import javax.persistence.*;
 // @Entity, we want this class to have persistence in the database
