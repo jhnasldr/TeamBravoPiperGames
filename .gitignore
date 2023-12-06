@@ -12,6 +12,9 @@ target/
 *.iml
 *.ipr
 
+### MySql ###
+persistence.xml
+
 ### Eclipse ###
 .apt_generated
 .classpath
