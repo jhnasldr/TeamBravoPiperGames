@@ -1,11 +1,10 @@
 package org.teambravo.entity;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "solo_matches")
-
-
 public class MatchSoloPlayer {
 
     @Id
@@ -13,23 +12,22 @@ public class MatchSoloPlayer {
     @Column(name = "solo_match_id")
     private int id;
 
-
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "player1_id", referencedColumnName = "id")
     private Player player1;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "player2_id", referencedColumnName = "id")
     private Player player2;
 
     @Column(name  = "date")
-    private int date;
+    private LocalDateTime date;
 
 
     public MatchSoloPlayer() {
     }
 
-    public MatchSoloPlayer(int id, Player player1, Player player2, int date) {
+    public MatchSoloPlayer(int id, Player player1, Player player2, LocalDateTime date) {
         this.id = id;
         this.player1 = player1;
         this.player2 = player2;
@@ -56,15 +54,9 @@ public class MatchSoloPlayer {
         return player2;
     }
 
-    public void setPlayer2(Player player2) {
-        this.player2 = player2;
-    }
+    public void setPlayer2(Player player2) { this.player2 = player2; }
 
-    public int getDate() {
-        return date;
-    }
+    public LocalDateTime getDate() { return date; }
 
-    public void setDate(int date) {
-        this.date = date;
-    }
+    public void setDate(LocalDateTime date) { this.date = date; }
 }
