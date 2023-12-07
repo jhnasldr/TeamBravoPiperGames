@@ -1,6 +1,6 @@
 package org.teambravo.controller;
 
-import org.teambravo.entity.TeamClass;
+import org.teambravo.entity.StaffClass;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -8,15 +8,15 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public class TeamClassController {
+public class StaffClassController {
 
     public static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("hibernate");
 
     // CRUD
 
     //CREATE
-
-    public boolean saveTeam(Object teamClass) {
+    /* // Ska man kunna lägga till staff? Tänker att de kopplas direkt med foreign_keys
+    public boolean saveStaff(Object staffClass) {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction transaction = null;
 
@@ -37,26 +37,27 @@ public class TeamClassController {
         return false;
 
     }
+    */
 
-    //READ
-    public List<TeamClass> getAllTeams (boolean printOut){
+    //READ - Läsa av staff id och person id
+    public List<StaffClass> getAllStaff (boolean printOut){
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction transaction = null;
 
         try {
             transaction = entityManager.getTransaction();
             transaction.begin();
-            List<TeamClass> teamResultList = entityManager.createQuery("FROM TeamClass", TeamClass.class).getResultList();
+            List<StaffClass> staffResultList = entityManager.createQuery("FROM StaffClass ", StaffClass.class).getResultList();
             // teamClassToReturn.addAll(teamResultList.getResultList());
             transaction.commit();
             if (printOut) {
-                for (TeamClass teamClass :
-                        teamResultList) {
-                    System.out.println(teamClass.getTeamId() + ". " + teamClass.getTeamName());
+                for (StaffClass staffClass :
+                        staffResultList) {
+                    System.out.println(staffClass.getStaff_id() + ". " + staffClass.getPerson());
 
                 }
             }
-            return  teamResultList;
+            return  staffResultList;
 
         } catch (Exception e) {
             if (transaction != null) {
@@ -68,6 +69,9 @@ public class TeamClassController {
         }
         return null;
     }
+
+    /* // Behövs inte uppdatera staff tror jag
+
     public boolean updateTeam(org.teambravo.entity.TeamClass teamClass){
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction transaction = null;
@@ -86,8 +90,10 @@ public class TeamClassController {
             entityManager.close();
         }
         return false;
-    }
-    public boolean deleteTeam(int teamId) {
+    } */
+
+    //Deletea staff utifrån
+    public boolean deleteStaff(int staff_id) {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction transaction = null;
 
@@ -96,10 +102,10 @@ public class TeamClassController {
             transaction.begin();
 
 
-            TeamClass teamToDelete = entityManager.find(TeamClass.class, teamId);
+            StaffClass staffToDelete = entityManager.find(StaffClass.class, staff_id);
 
-            if (teamToDelete != null) {
-                entityManager.remove(teamToDelete);
+            if (staffToDelete != null) {
+                entityManager.remove(staffToDelete);
                 transaction.commit();
                 return true;
             }

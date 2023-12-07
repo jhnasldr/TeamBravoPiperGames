@@ -2,8 +2,6 @@ package org.teambravo.entity;
 
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "Teams")
@@ -12,20 +10,25 @@ public class TeamClass {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "team_id")
-    private int id;
+    private int team_id;
 
     @Column(name = "team_name" , length = 50)
     private String name;
 
-    // @OneToMany (fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy ="team")
-    //private List<TeamClass> teamList = new ArrayList<>();
+    // @Id
+    @Column (name = "game_id")
+    private int game_id;
+
+    // @OneToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy ="team")
+    // private List<TeamMember> teamMembers = new ArrayList<>();
     public TeamClass() {
 
     }
 
-    public TeamClass(int id, String name) {
-        this.id = id;
+    public TeamClass(int id, String name, int game_id) {
+        this.team_id = id;
         this.name = name;
+        this.game_id = game_id;
     }
 
     public TeamClass(String teamName) {
@@ -33,16 +36,17 @@ public class TeamClass {
     }
 
     public int getTeamId() {
-        return id;
+        return team_id;
+    }
+
+    public int getGame_id() {
+        return game_id;
     }
 
     public String getTeamName() {
         return name;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
 
     }

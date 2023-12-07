@@ -1,5 +1,6 @@
 package org.teambravo.view;
 
+// import org.teambravo.JavaFxGUI.ScenebuilderGUI;
 import org.teambravo.controller.CarController;
 import org.teambravo.controller.CustomerController;
 import org.teambravo.controller.TeamClassController;
@@ -19,11 +20,14 @@ public class Menu {
     private CustomerController customerController;
     private CarController carController;
     private TeamClassController teamClassController;
+    private TeamClass teamClass;
+    // private ScenebuilderGUI scenebuilderGUI;
 
     public Menu(CustomerController customerController) {
         this.customerController = customerController;
         carController = new CarController();
         teamClassController = new TeamClassController();
+        // scenebuilderGUI = new ScenebuilderGUI();
     }
 
     public void showMenu(){
@@ -44,6 +48,8 @@ public class Menu {
         System.out.println("12. Add team");
         System.out.println("--------------------------");
         System.out.println("13. List teams");
+        System.out.println("--------------------------");
+        System.out.println("14. Delete team");
         System.out.println("--------------------------");
 
 
@@ -142,17 +148,28 @@ public class Menu {
                 }
                 break;
             case "12" :
-                // Add customer
+                // Add team
                 System.out.print("Ange team: ");
                 String TeamName = new Scanner(System.in).nextLine();
                 if(teamClassController.saveTeam(new TeamClass(TeamName))){
                     System.out.println(TeamName + " added");
+                    // ScenebuilderGUI.addTeamFromConsole(TeamName);
                 } else {
                     System.out.println("Failed to add team");
                 } break;
             case "13":
-                // List all cars
+                // List all teams
                 teamClassController.getAllTeams(true);
+                break;
+            case "14":
+                // Delete team
+                teamClassController.getAllTeams(true);
+                System.out.print("Choose team: ");
+                if (teamClassController.deleteTeam(new Scanner(System.in).nextInt())){
+                    System.out.println("Team deleted");
+                } else {
+                    System.out.println("Failed to delete team");
+                }
                 break;
 
 
