@@ -1,5 +1,7 @@
 package org.teambravo.entity;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "players")
@@ -14,6 +16,12 @@ public class Player {
     private int teamId;
 
     /*private List<TeamClass> teamMembership = new ArrayList<>();*/
+
+    @OneToMany(mappedBy = "player1", cascade = CascadeType.ALL)
+    private List<MatchSoloPlayer> matchesAsPlayer1= new ArrayList<>();
+    @OneToMany(mappedBy = "player2", cascade = CascadeType.ALL)
+    private List<MatchSoloPlayer> matchesAsPlayer2= new ArrayList<>();
+
 
     public Player(int playerId, int personId, int teamId) {
         this.playerId = playerId;
