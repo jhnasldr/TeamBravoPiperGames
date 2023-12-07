@@ -162,7 +162,7 @@ public class Menu {
                 teamClassController.getAllTeams(true);
                 break;
             case "14":
-                // Delete customer
+                // Delete team
                 teamClassController.getAllTeams(true);
                 System.out.print("Choose team: ");
                 if (teamClassController.deleteTeam(new Scanner(System.in).nextInt())){

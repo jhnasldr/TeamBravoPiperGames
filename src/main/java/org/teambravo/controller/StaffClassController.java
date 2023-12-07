@@ -53,7 +53,7 @@ public class StaffClassController {
             if (printOut) {
                 for (StaffClass staffClass :
                         staffResultList) {
-                    System.out.println(staffClass.getStaff_id() + ". " + staffClass.getPerson_id());
+                    System.out.println(staffClass.getStaff_id() + ". " + staffClass.getPerson());
 
                 }
             }

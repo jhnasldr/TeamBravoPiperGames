@@ -15,19 +15,20 @@ public class TeamClass {
     @Column(name = "team_name" , length = 50)
     private String name;
 
-    @Id
+    // @Id
     @Column (name = "game_id")
     private int game_id;
 
-    // @OneToMany (fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy ="team")
-    //private List<TeamClass> teamList = new ArrayList<>();
+    // @OneToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy ="team")
+    // private List<TeamMember> teamMembers = new ArrayList<>();
     public TeamClass() {
 
     }
 
-    public TeamClass(int id, String name) {
+    public TeamClass(int id, String name, int game_id) {
         this.team_id = id;
         this.name = name;
+        this.game_id = game_id;
     }
 
     public TeamClass(String teamName) {
@@ -38,13 +39,14 @@ public class TeamClass {
         return team_id;
     }
 
+    public int getGame_id() {
+        return game_id;
+    }
+
     public String getTeamName() {
         return name;
     }
 
-    // public void setId(int id) {
-    //  this.id = id;
-    // }
 
 
     }

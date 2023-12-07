@@ -6,41 +6,41 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Staff")
 public class StaffClass {
-    //Primary key
+    // Primary key
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column (name = "staff_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "staff_id")
     private int staff_id;
 
-    @Id
-    @Column (name = "person_id")
-    private int person_id;
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person person;
 
-    // @OneToMany (fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy ="team")
-    //private List<TeamClass> teamList = new ArrayList<>();
     public StaffClass() {
-
     }
 
-    public StaffClass(int staff_id, int person_id) {
+    public StaffClass(int staff_id, Person person) {
         this.staff_id = staff_id;
-        this.person_id = person_id;
+        this.person = person;
     }
 
-
+    // Getters och setters
     public int getStaff_id() {
         return staff_id;
     }
 
-    public int getPerson_id() {
-        return person_id;
+    public void setStaff_id(int staff_id) {
+        this.staff_id = staff_id;
     }
 
-    // public void setId(int id) {
-    //  this.id = id;
-    // }
+    public Person getPerson() {
+        return person;
+    }
 
-
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 }
+
 
 
