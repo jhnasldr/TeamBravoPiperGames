@@ -34,7 +34,7 @@ public class MatchTeamController {
     // Read
     public List<MatchTeam> getAllMatches() {
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
-        String query = "SELECT m FROM MatchTeam m";
+        String query = "SELECT t FROM MatchTeam t";
         List<MatchTeam> teamMatches = em.createQuery(query, MatchTeam.class).getResultList();
         em.close();
         return teamMatches;
