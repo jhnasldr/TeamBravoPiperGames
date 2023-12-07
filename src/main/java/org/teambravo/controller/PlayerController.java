@@ -42,7 +42,7 @@ public class PlayerController {
         try {
             transaction = entityManager.getTransaction();
             transaction.begin();
-            List<Player> listToReturn = new ArrayList<>(entityManager.createQuery("FROM Player", Player.class).getResultList());
+            List<Player> listToReturn = new ArrayList<>(entityManager.createQuery("SELECT p FROM Player p", Player.class).getResultList());
             transaction.commit();
             if (printOut) {
                 for (Player player :
