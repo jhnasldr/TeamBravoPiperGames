@@ -22,11 +22,11 @@ public class Person {
     private String address;
     @Column(name = "person_postal_code", length = 10) //datatyp int är automatiskt not null?
     private int postalCode;
-    @Column(name = "person_city", length = 60, nullable = false)
+    @Column(name = "person_city", length = 60)
     private String city;
-    @Column(name = "person_country", length = 60, nullable = false)
+    @Column(name = "person_country", length = 60)
     private String country;
-    @Column(name = "person_email", length = 60, nullable = false)
+    @Column(name = "person_email", length = 60)
     private String email;
 
 
