@@ -1,3 +1,5 @@
+
+
 package org.teambravo.entity;
 
 
@@ -5,50 +7,62 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Teams")
+
 public class TeamClass {
     //Primary key
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column (name = "team_id")
-    private int team_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "team_id")
+    private int id;
 
-    @Column(name = "team_name" , length = 50)
+    @Column(name = "team_name", length = 50)
     private String name;
 
-    // @Id
-    @Column (name = "game_id")
-    private int game_id;
+    @ManyToOne
+    @JoinColumn(name = "game_id")
+    private Game game;
 
-    // @OneToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy ="team")
-    // private List<TeamMember> teamMembers = new ArrayList<>();
     public TeamClass() {
 
     }
 
-    public TeamClass(int id, String name, int game_id) {
-        this.team_id = id;
-        this.name = name;
-        this.game_id = game_id;
-    }
-
     public TeamClass(String teamName) {
-        this.name = teamName;
+
     }
 
-    public int getTeamId() {
-        return team_id;
+    public int getTeam_id() {
+        return id;
     }
 
-    public int getGame_id() {
-        return game_id;
-    }
-
-    public String getTeamName() {
+    public String getName() {
         return name;
     }
 
-
-
+    public Game getGame() {
+        return game;
     }
+
+    public void setTeam_id(int team_id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public TeamClass(int id, String name, Game game) {
+        this.id = id;
+        this.name = name;
+        this.game = game;
+    }
+
+    public TeamClass(TeamClass teamClass) {
+    }
+}
+
 
 

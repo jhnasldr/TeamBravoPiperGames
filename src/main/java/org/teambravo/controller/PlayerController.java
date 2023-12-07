@@ -47,7 +47,7 @@ public class PlayerController {
             if (printOut) {
                 for (Player player :
                         listToReturn) {
-                    System.out.println(player.getPlayerId() + ". " + player.getTeamId() + ". " + player.getPersonId());
+                    System.out.println(player.getPlayerId() + ". " + player.getTeam() + ". " + player.getPerson());
                 }
             }
             return listToReturn;

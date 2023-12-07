@@ -52,7 +52,7 @@ public class TeamClassController {
             if (printOut) {
                 for (TeamClass teamClass :
                         teamResultList) {
-                    System.out.println(teamClass.getTeamId() + ". " + teamClass.getTeamName());
+                    System.out.println(teamClass.getName() + ". " + teamClass.getName());
 
                 }
             }

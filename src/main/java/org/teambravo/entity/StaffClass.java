@@ -10,7 +10,7 @@ public class StaffClass {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "staff_id")
-    private int staff_id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "person_id")
@@ -19,18 +19,18 @@ public class StaffClass {
     public StaffClass() {
     }
 
-    public StaffClass(int staff_id, Person person) {
-        this.staff_id = staff_id;
+    public StaffClass(int id, Person person) {
+        this.id = id;
         this.person = person;
     }
-
+    
     // Getters och setters
     public int getStaff_id() {
-        return staff_id;
+        return id;
     }
 
     public void setStaff_id(int staff_id) {
-        this.staff_id = staff_id;
+        this.id = id;
     }
 
     public Person getPerson() {

@@ -1,9 +1,7 @@
 package org.teambravo.controller;
 
-import org.teambravo.entity.Car;
 import org.teambravo.entity.Person;
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

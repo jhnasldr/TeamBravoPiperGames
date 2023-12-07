@@ -15,11 +15,11 @@ public class MatchTeam {
 
 
     @ManyToOne
-    @JoinColumn(name = "team1_id", referencedColumnName = "id")
+    @JoinColumn(name = "team1_id", referencedColumnName = "team_id")
     private TeamClass teamClass1;
 
     @ManyToOne
-    @JoinColumn(name = "team2_id", referencedColumnName = "id")
+    @JoinColumn(name = "team2_id", referencedColumnName = "team_id")
     private TeamClass teamClass2;
 
     @Column(name  = "date")
