@@ -9,7 +9,7 @@ public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "player_id")
-    private Long playerId;
+    private int playerId;
 
     @ManyToOne
     @JoinColumn(name = "person_id")
@@ -40,11 +40,11 @@ public class Player {
 
 
 
-    public Long getPlayerId() {
+    public int getPlayerId() {
         return playerId;
     }
 
-    public void setPlayerId(Long playerId) {
+    public void setPlayerId(int playerId) {
         this.playerId = playerId;
     }
 
