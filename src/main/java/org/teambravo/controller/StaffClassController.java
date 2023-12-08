@@ -1,6 +1,6 @@
 package org.teambravo.controller;
 
-import org.teambravo.entity.StaffClass;
+import org.teambravo.entity.Staff;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -40,18 +40,18 @@ public class StaffClassController {
     */
 
     //READ - Läsa av staff id och person id
-    public List<StaffClass> getAllStaff (boolean printOut){
+    public List<Staff> getAllStaff (boolean printOut){
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction transaction = null;
 
         try {
             transaction = entityManager.getTransaction();
             transaction.begin();
-            List<StaffClass> staffResultList = entityManager.createQuery("FROM StaffClass ", StaffClass.class).getResultList();
+            List<Staff> staffResultList = entityManager.createQuery("FROM Staff ", Staff.class).getResultList();
             // teamClassToReturn.addAll(teamResultList.getResultList());
             transaction.commit();
             if (printOut) {
-                for (StaffClass staffClass :
+                for (Staff staffClass :
                         staffResultList) {
                     System.out.println(staffClass.getStaff_id() + ". " + staffClass.getPerson());
 
@@ -72,7 +72,7 @@ public class StaffClassController {
 
     /* // Behövs inte uppdatera staff tror jag
 
-    public boolean updateTeam(org.teambravo.entity.TeamClass teamClass){
+    public boolean updateTeam(org.teambravo.entity.Team teamClass){
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction transaction = null;
         try {
@@ -102,7 +102,7 @@ public class StaffClassController {
             transaction.begin();
 
 
-            StaffClass staffToDelete = entityManager.find(StaffClass.class, staff_id);
+            Staff staffToDelete = entityManager.find(Staff.class, staff_id);
 
             if (staffToDelete != null) {
                 entityManager.remove(staffToDelete);

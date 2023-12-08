@@ -1,7 +1,7 @@
 package org.teambravo.view;
 
 import org.teambravo.controller.TeamClassController;
-import org.teambravo.entity.TeamClass;
+import org.teambravo.entity.Team;
 
 import java.util.Scanner;
 
@@ -38,7 +38,7 @@ public class Menu {
             case "12":
                 System.out.print("Ange team: ");
                 String teamName = new Scanner(System.in).nextLine();
-                if (teamClassController.saveTeam(new TeamClass(teamName))) {
+                if (teamClassController.saveTeam(new Team(teamName))) {
                     System.out.println(teamName + " added");
                 } else {
                     System.out.println("Failed to add team");

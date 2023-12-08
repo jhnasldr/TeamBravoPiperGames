@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Teams")
 
-public class TeamClass {
+public class Team {
     //Primary key
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,11 +22,11 @@ public class TeamClass {
     @JoinColumn(name = "game_id")
     private Game game;
 
-    public TeamClass() {
+    public Team() {
 
     }
 
-    public TeamClass(String teamName) {
+    public Team(String teamName) {
 
     }
 
@@ -54,13 +54,13 @@ public class TeamClass {
         this.game = game;
     }
 
-    public TeamClass(int id, String name, Game game) {
+    public Team(int id, String name, Game game) {
         this.id = id;
         this.name = name;
         this.game = game;
     }
 
-    public TeamClass(TeamClass teamClass) {
+    public Team(Team team) {
     }
 }
 

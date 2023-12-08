@@ -17,7 +17,7 @@ public class Player {
 
     @ManyToOne
     @JoinColumn(name = "team_id1")
-    private TeamClass team;
+    private Team team;
 
     @OneToMany(mappedBy = "player1", cascade = CascadeType.ALL)
     private List<MatchSoloPlayer> matchesAsPlayer1 = new ArrayList<>();
@@ -56,11 +56,11 @@ public class Player {
         this.person = person;
     }
 
-    public TeamClass getTeam() {
+    public Team getTeam() {
         return team;
     }
 
-    public void setTeam(TeamClass team) {
+    public void setTeam(Team team) {
         this.team = team;
     }
 

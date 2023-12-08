@@ -5,21 +5,28 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Staff")
-public class StaffClass {
+public class Staff {
     // Primary key
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "staff_id")
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // @Column(name = "staff_id")
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "person_id")
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @MapsId
     private Person person;
 
-    public StaffClass() {
+
+    //@ManyToOne
+    // @OneToOne
+    // @JoinColumn(name = "person_id")
+    // private Person person;
+
+    public Staff() {
     }
 
-    public StaffClass(int id, Person person) {
+    public Staff(int id, Person person) {
         this.id = id;
         this.person = person;
     }
